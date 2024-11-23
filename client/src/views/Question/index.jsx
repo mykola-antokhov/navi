@@ -6,11 +6,19 @@ import useQuestion from '@hooks/useQuestion';
 
 const Question = () => {
   const { questionId } = useParams();
-  const { question } = useQuestion({ questionId: Number(questionId) });
+  const { question, loading } = useQuestion({ questionId: Number(questionId) });
+
+  if (loading) {
+    return <p>loading...</p>;
+  }
 
   return (
     <div className={styles.wrapper}>
-      {question && <Content {...question} />}
+      {question ? (
+        <Content {...question} />
+      ) : (
+        <p>Message not found</p>
+      )}
     </div>
   );
 };

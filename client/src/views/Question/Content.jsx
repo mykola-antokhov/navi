@@ -42,6 +42,8 @@ const Content = ({ answer, id, model, question, status }) => {
 
   return (
     <div>
+      <h3>Model:</h3>
+      <p>{model}</p>
       <h3>Question:</h3>
       <p>{question}</p>
       <h3>Answer:</h3>
