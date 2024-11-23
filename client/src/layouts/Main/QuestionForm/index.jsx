@@ -10,6 +10,7 @@ const QuestionForm = () => {
   const { models } = useAiModels();
   const [question, setQuestion] = useState('');
   const [selectedModel, setSelectedModel] = useState('');
+  const formDisabled = !selectedModel || !question;
 
   const onQuestionChange = (e) => setQuestion(e.target.value);
 
@@ -34,7 +35,7 @@ const QuestionForm = () => {
           )))}
         </select>
       <input onChange={onQuestionChange} type="text" value={question} />
-      <button type="submit">Ask</button>
+      <button disabled={formDisabled} type="submit">Ask</button>
     </form>
   );
 };
