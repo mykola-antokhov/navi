@@ -1,0 +1,9 @@
+:local {
+  .wrapper {
+    display: grid;
+    grid-gap: 24px;
+    grid-template-columns: 300px 1fr;
+    grid-template-rows: 1fr 120px;
+    height: 100vh;
+  }
+}
