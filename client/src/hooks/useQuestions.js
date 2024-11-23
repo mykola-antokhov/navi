@@ -3,11 +3,21 @@ import { getQuestions } from '@db/IndexDB';
 
 const useQuestions = () => {
   const [questions, setQuestions] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
 
   const fetchQuestions = async () => {
-    const allItems = await getQuestions();
+    try {
+      setLoading(true);
 
-    setQuestions(allItems);
+      const allItems = await getQuestions();
+
+      setQuestions(allItems);
+    } catch (err) {
+      setError(err.message);
+    } finally {
+      setLoading(false);
+    }
   };
 
   useEffect(() => {
@@ -20,7 +30,7 @@ const useQuestions = () => {
     };
   }, []);
 
-  return questions;
+  return { questions, loading, error };
 };
 
 export default useQuestions;

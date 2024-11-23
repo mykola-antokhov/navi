@@ -4,7 +4,7 @@ import styles from './index.module.scss';
 import useQuestions from '@hooks/useQuestions';
 
 const Navigation = () => {
-  const questions = useQuestions();
+  const { questions } = useQuestions();
 
   return (
     <nav className={styles.wrapper}>

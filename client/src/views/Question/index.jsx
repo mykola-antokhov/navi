@@ -6,7 +6,7 @@ import useQuestion from '@hooks/useQuestion';
 
 const Question = () => {
   const { questionId } = useParams();
-  const question = useQuestion({ questionId: Number(questionId) });
+  const { question } = useQuestion({ questionId: Number(questionId) });
 
   return (
     <div className={styles.wrapper}>
