@@ -18,4 +18,4 @@ Ensure you have Docker installed on your system before proceeding.
 docker-compose up
 ```
 
-3. Open your web browser and visit http://localhost:5173 to access your application.
+4. Open your web browser and visit http://localhost:5173 to access your application.
