@@ -1,6 +1,7 @@
 from flask import Blueprint, request, Response, jsonify
 from constants.models import AVAILABLE_MODELS
 from utils.stream_handlers import stream_openai_response, stream_anthropic_response
+from llm_providers import AnthropicProvider, OpenAIProvider
 
 messages_bp = Blueprint("messages", __name__)
 
@@ -17,12 +18,12 @@ def messages():
 
         if model in AVAILABLE_MODELS["openai"]:
             return Response(
-                stream_openai_response(model, system_prompt, user_message),
+                OpenAIProvider.stream_response(model, system_prompt, user_message),
                 mimetype="text/event-stream"
             )
         elif model in AVAILABLE_MODELS["anthropic"]:
             return Response(
-                stream_anthropic_response(model, system_prompt, user_message),
+                AnthropicProvider.stream_response(model, system_prompt, user_message),
                 mimetype="text/event-stream"
             )
         else:

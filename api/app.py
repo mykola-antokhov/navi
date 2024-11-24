@@ -4,6 +4,7 @@ from dotenv import load_dotenv
 from routes.messages import messages_bp
 from routes.models import models_bp
 from utils.api_keys_validation import anthropic_key_validation, openai_key_validation
+from llm_providers import AnthropicProvider, OpenAIProvider
 
 load_dotenv()
 
@@ -22,8 +23,8 @@ app.register_blueprint(messages_bp, url_prefix="/")
 app.register_blueprint(models_bp, url_prefix="/")
 
 try:
-    anthropic_key_validation()
-    openai_key_validation()
+    AnthropicProvider.key_validation()
+    OpenAIProvider.key_validation()
 except Exception as e:
     print(f"AI client key validation error: {e}")
 
